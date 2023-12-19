@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15a33ce7add4624da03f96ba890aff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 443929523}
   _animator: {fileID: 443929524}
   _rb: {fileID: 443929527}
   _moveSpeed: 2

@@ -2,6 +2,7 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
     //General Components
+    [SerializeField] private GameObject _player;
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _moveSpeed;
@@ -36,6 +37,11 @@ public class InputController : MonoBehaviour
         }
     }
 
+    public void PlayerDeath(){
+        Debug.Log("PlayerIsDead");
+        _player.SetActive(false);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
             LandPlayer(); //Reset jumps 
 
@@ -59,5 +65,9 @@ public class InputController : MonoBehaviour
         _animator.SetBool("IsOnGround", true);
             _animator.SetBool("IsJumped", false);
             _jumpCount = 0;
+    }
+
+    public void MakeDMG(){
+        _animator.SetBool("IsDead", true);
     }
 }
