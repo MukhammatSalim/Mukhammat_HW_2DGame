@@ -1,5 +1,5 @@
 using UnityEngine;
-public class InputController : MonoBehaviour
+public class InputController : MonoBehaviour, IPlayer
 {
     //General Components
     [SerializeField] private GameObject _player;
@@ -39,7 +39,7 @@ public class InputController : MonoBehaviour
 
     public void PlayerDeath(){
         Debug.Log("PlayerIsDead");
-        _player.SetActive(false);
+        Destroy(_player);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -63,11 +63,11 @@ public class InputController : MonoBehaviour
 
     private void LandPlayer(){
         _animator.SetBool("IsOnGround", true);
-            _animator.SetBool("IsJumped", false);
+            _animator.SetBool("HasJumped", false);
             _jumpCount = 0;
     }
 
-    public void MakeDMG(){
+    public void MakeDamage(){
         _animator.SetBool("IsDead", true);
     }
 }
